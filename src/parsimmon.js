@@ -62,7 +62,11 @@ Parsimmon.Parser = P(function(_, _super, Parser) {
     );
   };
 
-  _.init = function(body) { this._ = body; };
+  _.init = function(body) {
+    this._ = body;
+    this._.success = makeSuccess;
+    this._.failure = makeFailure;
+  };
 
   _.parse = function(stream) {
     var result = this.skip(eof)._(stream, 0);
